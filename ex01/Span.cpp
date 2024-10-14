@@ -12,7 +12,7 @@
 
 #include "Span.hpp"
 
-Span::Span(unsigned int n) : size_(n)
+Span::Span(unsigned int n) : _size(n)
 {
 
 }
@@ -24,7 +24,7 @@ Span::Span(const Span& other)
 
 Span& Span::operator=(const Span& other)
 {
-	*this = other;
+	(void)other;
 	return *this;
 }
 
@@ -35,29 +35,30 @@ Span::~Span()
 
 void	Span::addNumber(int n)
 {
-	if (span_.size() >= size_)
+	if (_span.size() >= _size)
 		throw (FullSpanException());
-	span_.insert(n);
+	_span.insert(n);
 }
 
 void	Span::addNumbers(std::vector<int>::iterator a, std::vector<int>::iterator b)
 {
 	while (a++ != b)
 	{
-		if (span_.size() >= size_)
+		if (_span.size() >= _size)
 			throw (FullSpanException());
-		addNumber(*a);
+		else
+			addNumber(*a);
 	}		
 }
 
 int		Span::shortestSpan()
 {
-	if (span_.size() < 2)
+	if (_span.size() < 2)
 		throw (EmptySpanException());
 	int	shortest = -1;
 	
-	std::set<int>::iterator n = span_.begin();
-	for (std::set<int>::iterator n1 = ++span_.begin(); n1 != span_.end(); n1++)
+	std::set<int>::iterator n = _span.begin();
+	for (std::set<int>::iterator n1 = ++_span.begin(); n1 != _span.end(); n1++)
 	{
 		if (*n1 - *n < shortest || shortest == -1)
 			shortest = *n1 - *n;
@@ -68,9 +69,9 @@ int		Span::shortestSpan()
 
 int		Span::longestSpan()
 {
-	if (span_.size() < 2)
+	if (_span.size() < 2)
 		throw (EmptySpanException());
-	return (*span_.rbegin() - *span_.begin());
+	return (*_span.rbegin() - *_span.begin());
 }
 
 const char* Span::FullSpanException::what(void) const throw()
@@ -80,5 +81,5 @@ const char* Span::FullSpanException::what(void) const throw()
 
 const char* Span::EmptySpanException::what(void) const throw()
 {
-	return ("Span is empty.");
+	return ("Span is empty or not enough filled.");
 }

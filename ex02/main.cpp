@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
-/*int	main(void)
+int	main(void)
 {
 	MutantStack<int> mstack;
 
@@ -42,9 +42,9 @@
 	std::stack<int> s(mstack);
 	
 	return 0;
-}*/
+}
 
-#include <list>
+/*#include <list>
 int	main(void)
 {
 	std::list<int>	mstack;
@@ -69,4 +69,4 @@ int	main(void)
 	std::list<int> s(mstack);
 	
 	return 0;
-}
+}*/

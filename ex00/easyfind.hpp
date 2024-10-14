@@ -39,6 +39,7 @@ void	easyfind(T& container, int value)
 template <typename T>
 void	searchValue(T& container, int value)
 {
+	std::cout << "Value to find : " << value << std::endl;
 	try
 	{
 		easyfind(container, value);

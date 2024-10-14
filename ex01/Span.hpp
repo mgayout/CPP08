@@ -46,8 +46,8 @@ class	Span
 			};
 
 	private:
-			std::set<int>	span_;
-			unsigned int	size_;
+			std::set<int>	_span;
+			unsigned int	_size;
 };
 
 #endif
